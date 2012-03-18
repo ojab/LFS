@@ -1,50 +1,55 @@
 #!/bin/sh
 ########################################################################
-# Begin $rc_base/init.d/
+# Begin scriptname
 #
 # Description :
 #
 # Authors     :
 #
-# Version     : 00.00
+# Version     : LFS x.x
 #
 # Notes       :
 #
 ########################################################################
 
-. /etc/sysconfig/rc
-. ${rc_functions}
+### BEGIN INIT INFO
+# Provides:            template
+# Required-Start:
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:
+# Default-Stop:
+# Short-Description:
+# Description:
+# X-LFS-Provided-By:
+### END INIT INFO
+
+. /lib/lsb/init-functions
 
 case "${1}" in
-	start)
-		boot_mesg "Starting..."
-		loadproc
-		;;
+   start)
+      log_info_msg "Starting..."
+      start_daemon fully_qualified_path
+      ;;
 
-	stop)
-		boot_mesg "Stopping..."
-		killproc
-		;;
+   stop)
+      log_info_msg "Stopping..."
+      killproc fully_qualified_path
+      ;;
 
-	reload)
-		boot_mesg "Reloading..."
-		reloadproc
-		;;
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
 
-	restart)
-		${0} stop
-		sleep 1
-		${0} start
-		;;
-
-	status)
-		statusproc
-		;;
-
-	*)
-		echo "Usage: ${0} {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
 esac
 
-# End $rc_base/init.d/
+exit 0
+
+# End scriptname
