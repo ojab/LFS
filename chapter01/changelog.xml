@@ -37,6 +37,15 @@
 
 -->
     <listitem>
+      <para>2012-04-19</para>
+      <itemizedlist>
+        <listitem>
+          <para>[jhuntwork] - Adjust build method to use sysroot.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2012-04-15</para>
       <itemizedlist>
          <listitem>
