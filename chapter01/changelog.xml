@@ -39,6 +39,11 @@
     <listitem>
       <para>2012-04-19</para>
       <itemizedlist>
+         <listitem>
+           <para>[bdubbs] - Change two group IDs to support a 
+           legacy program. Fixes
+           <ulink url="&lfs-ticket-root;3061">#3061</ulink>.</para>
+         </listitem>
         <listitem>
           <para>[jhuntwork] - Adjust build method to use sysroot.</para>
         </listitem>
