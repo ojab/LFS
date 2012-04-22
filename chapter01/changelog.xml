@@ -37,6 +37,23 @@
 
 -->
     <listitem>
+      <para>2012-04-22</para>
+      <itemizedlist>
+        <listitem>
+          <para>[jhuntwork] - Use --with-native-system-header-dir switch in chapter 5 gcc.
+          This replaces seds that were used previously to alter the CROSS_SYSTEM_HEADER_DIR
+          and NATIVE_SYSTEM_HEADER_DIR values to keep the toolchain searching for headers
+          only in /tools/include and not /usr/include. Thanks to Pierre Labastie.</para>
+        </listitem>
+        <listitem>
+          <para>[jhuntwork] - Remove --without-cloog and --without-ppl from gcc pass2.
+          These are unecessary since pass 1 gcc shouldn't be able to find and link to
+          them when installed on the host system anyway.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2012-04-19</para>
       <itemizedlist>
          <listitem>

@@ -98,12 +98,6 @@ do
   touch $file.orig
 done</userinput></screen>
 
-    <para>Set the location GCC will search for its system headers:</para>
-
-<screen><userinput remap="pre">cp gcc/Makefile.in{,.bak3}
-sed '/^NATIVE_SYSTEM_HEADER_DIR/s@= .*@= /tools/include@' \
-    gcc/Makefile.in.bak3 &gt; gcc/Makefile.in</userinput></screen>
-
     <para>As in the first build of GCC it requires the GMP, MPFR and MPC
     packages. Unpack the tarballs and move them into the required directory
     names:</para>
@@ -131,6 +125,7 @@ RANLIB=$LFS_TGT-ranlib          \
 ../gcc-&gcc-version;/configure  \
     --prefix=/tools             \
     --with-local-prefix=/tools  \
+    --with-native-system-header-dir=/tools/include \
     --enable-clocale=gnu        \
     --enable-shared             \
     --enable-threads=posix      \
@@ -140,8 +135,6 @@ RANLIB=$LFS_TGT-ranlib          \
     --disable-multilib          \
     --disable-bootstrap         \
     --disable-libgomp           \
-    --without-ppl               \
-    --without-cloog             \
     --with-mpfr-include=$(pwd)/../gcc-&gcc-version;/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs</userinput></screen>
 

@@ -100,12 +100,6 @@ done</userinput></screen>
     changes to the original files in case the commands are inadvertently run twice.
     </para> 
  
-    <para>Set the location GCC will search for its system headers:</para>
-
-<screen><userinput remap="pre">cp gcc/Makefile.in{,.orig}
-sed '/^CROSS_SYSTEM_HEADER_DIR/s@= .*@= /tools/include@' \
-    gcc/Makefile.in.orig &gt; gcc/Makefile.in</userinput></screen>
-
     <para>The GCC documentation recommends building GCC outside of the
     source directory in a dedicated build directory:</para>
 
@@ -121,6 +115,7 @@ cd ../gcc-build</userinput></screen>
     --with-newlib              \
     --without-headers          \
     --with-local-prefix=/tools \
+    --with-native-system-header-dir=/tools/include \
     --disable-nls              \
     --disable-shared           \
     --disable-multilib         \
@@ -168,6 +163,18 @@ cd ../gcc-build</userinput></screen>
          </listitem>
        </varlistentry>
  
+       <varlistentry>
+         <term><parameter>--with-native-system-header-dir=/tools/include</parameter></term>
+         <listitem>
+           <para>By default GCC searches <filename>/usr/include</filename> for system
+           headers. In conjunction with the sysroot switch, this would translate normally
+           to <filename>$LFS/usr/include</filename>. However the headers that will be installed
+           in the next two sections will go to <filename>$LFS/tools/include</filename>. This
+           switch ensures that gcc will find them correctly. In the second pass of GCC, this
+           same switch will ensure that no headers from the host system are found.</para>
+         </listitem>
+       </varlistentry>
+
        <varlistentry>
         <term><parameter>--disable-shared</parameter></term>
         <listitem>
