@@ -46,9 +46,10 @@
           only in /tools/include and not /usr/include. Thanks to Pierre Labastie.</para>
         </listitem>
         <listitem>
-          <para>[jhuntwork] - Remove --without-cloog and --without-ppl from gcc pass2.
-          These are unecessary since pass 1 gcc shouldn't be able to find and link to
-          them when installed on the host system anyway.</para>
+          <para>[jhuntwork] - Remove --without-cloog and --without-ppl from chapter 5 gcc.
+          These are unnecessary since it doesn't matter if pass 1 gcc is linked against
+          host libs and it should be impossible for the build of pass 2 gcc to find host
+          headers or libs.</para>
         </listitem>
       </itemizedlist>
     </listitem>

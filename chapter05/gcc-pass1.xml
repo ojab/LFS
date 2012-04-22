@@ -126,8 +126,6 @@ cd ../gcc-build</userinput></screen>
     --disable-libgomp          \
     --disable-libquadmath      \
     --enable-languages=c       \
-    --without-ppl              \
-    --without-cloog            \
     --with-mpfr-include=$(pwd)/../gcc-&gcc-version;/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs</userinput></screen>
 
@@ -208,15 +206,6 @@ cd ../gcc-build</userinput></screen>
         <listitem>
           <para>This option ensures that only the C compiler is built.
           This is the only language needed now.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term><parameter>--without-ppl, --without-cloog</parameter></term>
-        <listitem>
-          <para>These switches prevent GCC from building against the PPL and
-          CLooG libraries which may be present on the host system, but will not
-          be available in the chroot environment.</para>
         </listitem>
       </varlistentry>
 
