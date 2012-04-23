@@ -32,11 +32,6 @@
 <!ENTITY flex-gcc-patch-size "1 KB">
 
 
-<!ENTITY gcc-startfiles-patch "gcc-&gcc-version;-startfiles_fix-1.patch">
-<!ENTITY gcc-startfiles-patch-md5 "799ef1971350d2e3c794f2123f247cc6">
-<!ENTITY gcc-startfiles-patch-size "1.5 KB">
-
-
 <!ENTITY glibc-gcc_fix-patch "glibc-&glibc-version;-gcc_fix-1.patch">
 <!ENTITY glibc-gcc_fix-patch-md5 "d1f28cb98acb9417fe52596908bbb9fd">
 <!ENTITY glibc-gcc_fix-patch-size "2.5 KB">
