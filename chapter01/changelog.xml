@@ -36,6 +36,17 @@
     </listitem>
 
 -->
+
+    <listitem>
+      <para>2012-04-23</para>
+      <itemizedlist>
+        <listitem>
+          <para>[jhuntwork] - Update chapter 5 toolchain technical notes to match changes
+          in build method.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
     <listitem>
       <para>2012-04-22</para>
       <itemizedlist>
