@@ -112,7 +112,7 @@ src/udev/keymap/keys-to-name.h: src/udev/keymap/keys.txt
    END{print "};"                                      \
    }' $< > $@
 
-build/keymap: src/udev/keymap/keymap.c build/$(COMMON_LIB) $(KEYMAP_DEPS)
+build/keymap: cfg.h src/udev/keymap/keymap.c build/$(COMMON_LIB) $(KEYMAP_DEPS)
 	@echo LINK $@
 	$(VB)gcc $< -o $@ -I src/udev/keymap $(WARN) $(OPTIONS2) $(INCLUDE) $(DEF) \
       build/$(COMMON_LIB) $(LDFLAGS)

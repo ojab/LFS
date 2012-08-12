@@ -7,7 +7,7 @@ These files are distributed in the form of a tar file available
 from the LFS file mirrors.  The tarball is created with:
 
 mkdir /tmp/udev-lfs-$VERSION
-cp av * /tmp/udev-lfs-$VERSION
+cp -av * /tmp/udev-lfs-$VERSION
 tar -jcf /tmp/udev-lfs-$VERSION.tar.bz2 -C /tmp udev-lfs-$VERSION
 
 Makefile.lfs         - The main LFS Makefile.  Builds and installs

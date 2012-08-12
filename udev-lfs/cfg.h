@@ -40,5 +40,5 @@
 /* Enable GNU extensions on systems that have them.  */
 # define _GNU_SOURCE 1
 /* Version number of package */
-#define VERSION "187"
+#define VERSION "188"
 
