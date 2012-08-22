@@ -140,8 +140,7 @@ SED_PROCESS = \
         < $< > $@
 
 
-udev: cfg.h                      \
-      build                      \
+udev: common                     \
       build/$(COMMON_LIB)        \
       build/$(LIBUDEV_REAL_NAME) \
       build/udevd                \
@@ -156,10 +155,8 @@ udev: cfg.h                      \
       build/udev.pc              \
       build/libudev.pc
 
-build:
+common: udev-lfs-$(VERSION)/cfg.h
 	@mkdir -p build
-
-cfg.h: udev-lfs-$(VERSION)/cfg.h
 	cp udev-lfs-$(VERSION)/cfg.h .
 
 build/%o: %c
@@ -250,7 +247,7 @@ build/collect: build/collect.o build/$(COMMON_LIB)
 	$(VB)strip --strip-unneeded $@
 
 build/%pc: %pc.in
-	@echo SED $<
+	@echo GEN $@
 	@$(SED_PROCESS)
 
 install: udev

@@ -1,4 +1,4 @@
-# Custom systemd Makefile include that builds/installs gir only for LFS
+# Custom systemd Makefile include that builds/installs keymap tool only for LFS
 
 # vim: tabstop=3
 
@@ -70,10 +70,10 @@ KEYMAPS_FR =                           \
    keymaps-force-release/samsung-90x3a \
    keymaps-force-release/common-volume-keys
 
-KEYMAP_DEPS = src/udev/keymap/keys-from-name.h src/udev/keymap/keys-to-name.h
+KEYMAP_DEPS = common src/udev/keymap/keys-from-name.h src/udev/keymap/keys-to-name.h
 
 src/udev/keymap/keys.txt:
-	@echo AWK $@
+	@echo GEN $@
 	$(VB)awk '/^#define.*KEY_[^ ]+[ \t]+[0-9]/ \
    {                                         \
      if ($$2 != "KEY_MAX") { print $$2 }     \
@@ -81,7 +81,7 @@ src/udev/keymap/keys.txt:
    /usr/include/linux/input.h | sed 's/^KEY_COFFEE$$/KEY_SCREENLOCK/' > $@
 
 src/udev/keymap/keys-from-name.gperf: src/udev/keymap/keys.txt
-	@echo AWK $@
+	@echo GEN $@
 	$(VB)awk 'BEGIN                       \
    {                                    \
      print "struct key                  \
@@ -97,11 +97,11 @@ src/udev/keymap/keys-from-name.gperf: src/udev/keymap/keys.txt
    }' $< > $@
 
 src/udev/keymap/keys-from-name.h: src/udev/keymap/keys-from-name.gperf
-	@echo GPERF $@
+	@echo GEN $@
 	$(VB)gperf -L ANSI-C -t --ignore-case -N lookup_key -H hash_key_name -p -C $< > $@
 
 src/udev/keymap/keys-to-name.h: src/udev/keymap/keys.txt 
-	@echo AWK $@
+	@echo GEN $@
 	$(VB)awk 'BEGIN                                     \
    {                                                   \
      print "const char* const key_names[KEY_CNT] = { " \
@@ -112,7 +112,7 @@ src/udev/keymap/keys-to-name.h: src/udev/keymap/keys.txt
    END{print "};"                                      \
    }' $< > $@
 
-build/keymap: cfg.h src/udev/keymap/keymap.c build/$(COMMON_LIB) $(KEYMAP_DEPS)
+build/keymap: src/udev/keymap/keymap.c build/$(COMMON_LIB) $(KEYMAP_DEPS)
 	@echo LINK $@
 	$(VB)gcc $< -o $@ -I src/udev/keymap $(WARN) $(OPTIONS2) $(INCLUDE) $(DEF) \
       build/$(COMMON_LIB) $(LDFLAGS)

@@ -66,8 +66,8 @@ src/gudev/gudevenumtypes.c: src/gudev/gudevenumtypes.c.template src/gudev/gudeve
 	@echo GEN $@
 	$(VB)glib-mkenums --template $^ > $@
 
-build/%o: src/gudev/%c build cfg.h $(GUDEV_GENERATED)
-	@echo CCGUDEV $<
+build/%o: src/gudev/%c $(GUDEV_GENERATED) common
+	@echo CC $<
 	$(VB)gcc -c $(LIBGUDEV_CFLAGS) $(WARN) $(OPTIONS) $(INCLUDE) $(DEF) -o $@ $<
 
 build/$(LIBGUDEV_REAL_NAME): $(LIBGUDEV_OBJS) build/udev-local.a build/$(LIBUDEV_REAL_NAME)
@@ -78,9 +78,11 @@ build/$(LIBGUDEV_REAL_NAME): $(LIBGUDEV_OBJS) build/udev-local.a build/$(LIBUDEV
 	ln -sfn $(LIBGUDEV_REAL_NAME) build/$(LIBGUDEV_LINK_NAME)
 	ln -sfn $(LIBGUDEV_REAL_NAME) build/$(LIBGUDEV_SONAME)
 
-VPATH += src/gudev
+build/gudev-1.0.pc: src/gudev/gudev-1.0.pc.in
+	@echo GEN $@
+	@$(SED_PROCESS)
 
-gudev: build cfg.h build/$(LIBGUDEV_REAL_NAME) build/gudev-1.0.pc
+gudev: build/$(LIBGUDEV_REAL_NAME) build/gudev-1.0.pc
 
 clean-gudev:
 	rm -f src/gudev/gudevmarshal.h
@@ -101,6 +103,6 @@ install-gudev: gudev
 	@ln -svfn $(LIBGUDEV_REAL_NAME) $(DESTDIR)/usr/lib/$(LIBGUDEV_SONAME)
 	@ln -svfn $(LIBGUDEV_REAL_NAME) $(DESTDIR)/usr/lib/$(LIBGUDEV_LINK_NAME)
 
-	@cp -v build/gudev-1.0.pc       $(DESTDIR)/usr/lib/pkgconfig/gudev-1.0.pc
+	@cp -v build/gudev-1.0.pc       $(DESTDIR)/usr/lib/pkgconfig
 	@cp -v docs/gudev/html/*        $(DESTDIR)/usr/share/gtk-doc/html/gudev
 
