@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-scatter-changelog">
+  <?dbhtml filename="changelog.html"?>
+
+  <title>Changelog</title>
+
+  <para>This is version &version; of the Linux From Scratch book, dated
+  &releasedate;. If this book is more than six months old, a newer and better
+  version is probably already available. To find out, please check one of the
+  mirrors via <ulink url="&lfs-root;mirrors.html"/>.</para>
+
+  <para>Below is a list of changes made since the previous release of the
+  book.</para>
+
+  <itemizedlist>
+    <title>Changelog Entries:</title>
+
+<!-- Changelog template
+
+    <listitem>
+      <para>Date</para>
+      <itemizedlist>
+        <listitem>
+          <para>[name] - New changelog entry.</para>
+        </listitem>
+        <listitem>
+          <para>[name] - Previous changelog entry.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+-->
+    <listitem>
+      <para>2013-12-10</para>
+      <itemizedlist>
+        <listitem>
+          <para>[krejzi] - Start over.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Import LFS SVN-20131207.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Remove LFS-Bootscripts-20130821, Sysklogd-1.5.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Remove Sysvinit-2.88dsf, Udev-208.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added Acl-2.2.52, Attr-2.4.47, Libcap-2.22.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added D-Bus-1.6.18, Expat-2.1.0, Gperf-3.0.4.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added Intltool-0.50.2, XML::Parser-2.42_01.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added Libdbus-1.6.18, a package required to satisfy
+          circular dependency between D-Bus and Systemd.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added Systemd-208.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added new LFS-Network-Scripts, a replacement for LFS-Bootscripts
+          in Systemd environment.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Updated most of the Chapter 7 instruction for use with Systemd
+          environment. Removed obsolete pages.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Updated Kernel configuration page and added required setup for
+          Systemd.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Removed unneeded pseudo file systems from /etc/fstab file creation.
+          They are now handled by Systemd.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added glibc FHS patch which prevents nscd daemon from writing into
+          a non-FHS compliant directory.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Removed instructions from Coreutils and Findutils that were specific
+          to LFS-Bootscripts.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+  </itemizedlist>
+</sect1>
