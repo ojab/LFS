@@ -36,10 +36,10 @@
     </listitem>
 -->
     <listitem>
-      <para>2016-03-28</para>
+      <para>2016-03-29</para>
       <itemizedlist>
         <listitem>
-          <para>[renodr] - LFS-7.9-systemd released.</para>
+          <para>[renodr] - LFS 7.9-systemd released.</para>
         </listitem>
         <listitem>
           <para>[renodr] - Updated build times and sizes.</para>
