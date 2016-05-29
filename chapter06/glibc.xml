@@ -42,7 +42,7 @@
 
   <sect2 role="installation">
     <title>Installation of Glibc</title>
-
+<!--
     <note>
       <para>Some packages outside of LFS suggest installing GNU libiconv in
       order to translate data from one encoding to another. The project's
@@ -53,6 +53,13 @@
       an <function>iconv()</function> implementation and can convert from/to
       Unicode, therefore libiconv is not required on an LFS system.</para>
     </note>
+-->
+    <note><para>The Glibc build system is self-contained and will install
+    perfectly, even though the compiler specs file and linker are still
+    pointing to <filename class="directory">/tools</filename>. The specs
+    and linker cannot be adjusted before the Glibc install because the
+    Glibc autoconf tests would give false results and defeat the goal
+    of achieving a clean build.</para></note>
 
     <para>Some of the Glibc programs use non-FHS compilant
     <filename class="directory">/var/db</filename> directory to store
@@ -61,21 +68,9 @@
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
 
-    <para>The Glibc build system is self-contained and will install
-    perfectly, even though the compiler specs file and linker are still
-    pointing at <filename class="directory">/tools</filename>. The specs
-    and linker cannot be adjusted before the Glibc install because the
-    Glibc autoconf tests would give false results and defeat the goal
-    of achieving a clean build.</para>
-
-    <para>Now fix a build problem that affects i386 systems:</para>
+    <para>Fix some problems identified upstream:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-upstream-patch;</userinput></screen>
-
-    <para>The most recent stable version of Glibc does not handle large files
-    correctly.  Fix the problem with this patch:</para>
-
-<screen><userinput remap="pre">patch -Np1 -i ../&glibc-largefile-patch;</userinput></screen>
 
     <para>The Glibc documentation recommends building Glibc 
     in a dedicated build directory:</para>
@@ -86,7 +81,6 @@ cd       build</userinput></screen>
     <para>Prepare Glibc for compilation:</para>
 
 <screen><userinput remap="configure">../configure --prefix=/usr          \
-             --disable-profile      \
              --enable-kernel=&min-kernel; \
              --enable-obsolete-rpc</userinput></screen>
 
@@ -111,13 +105,14 @@ cd       build</userinput></screen>
     <itemizedlist>
 
       <listitem>
-        <para><emphasis>posix/tst-getaddrinfo4</emphasis> will always fail due
-        to not having the necessary  networking applications when the tests are
+        <para><emphasis>posix/tst-getaddrinfo4</emphasis> and 
+        <emphasis>posix/tst-getaddrinfo5</emphasis> will always fail due
+        to not having the necessary networking applications when the tests are
         run.</para>
       </listitem>
 
       <listitem>
-        <para>The <emphasis>tst/tst-cputimer1</emphasis> and 
+        <para>The <emphasis>rt/tst-cputimer1</emphasis> and 
         <emphasis>rt/tst-cpuclock2</emphasis> tests have been known to
         fail.  The reason is not completely understood, but indications are
         that minor timing issues can trigger these failures.</para>
@@ -125,30 +120,16 @@ cd       build</userinput></screen>
 
       <listitem>
         <para>The math tests sometimes fail when running on
-        systems where the CPU is not a relatively new genuine Intel or
-        authentic AMD processor.</para>
+        systems where the CPU is not a relatively new Intel or
+        AMD processor.</para>
       </listitem>
 
       <listitem>
-        <para>The <emphasis>elf/tst-protected1a</emphasis> and
-        <emphasis>elf/tst-protected1b</emphasis> tests are known to
-        fail with the current stable version of binutils.</para>
+        <para>The
+        <emphasis>nptl/tst-thread-affinity-{pthread,pthread2,sched}</emphasis>
+        tests may fail for reasons that have not been determined.  </para>
       </listitem>
-<!--
-      <listitem>
-        <para>When running on older and slower hardware or on systems under
-        load, some tests can fail because of test timeouts being exceeded.
-        Modifying the make check command to set a TIMEOUTFACTOR is reported to
-        help eliminate these errors (e.g. <command>TIMEOUTFACTOR=16
-        make -k check</command>).</para>
-      </listitem>
--->
-<!--
-      <listitem>
-        <para>libio/tst-ftell-partial-wide.out fails because it needs a locale
-        that has not yet been generated.</para>
-      </listitem>
--->
+
       <listitem>
         <para>Other tests known to fail on some architectures are
         malloc/tst-malloc-usable and nptl/tst-cleanupx4. </para>
@@ -172,10 +153,16 @@ cd       build</userinput></screen>
 <screen><userinput remap="install">cp -v ../nscd/nscd.conf /etc/nscd.conf
 mkdir -pv /var/cache/nscd</userinput></screen>
 
-    <para>The locales that can make the system respond in a different language
-    were not installed by the above command. None of the locales are required,
-    but if some of them are missing, test suites of the future packages would
-    skip important testcases.</para>
+    <para revision="systemd">Install the systemd support files for 
+    <command>nscd</command>:</para>
+
+    <screen revision="systemd"><userinput remap="install">install -v -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
+install -v -Dm644 ../nscd/nscd.service /lib/systemd/system/nscd.service</userinput></screen>
+
+    <para>Next, install the locales that can make the system respond in a
+    different language.  None of the locales are required, but if some of them
+    are missing, the test suites of future packages would skip important
+    testcases.</para>
 
     <para>Individual locales can be installed using the
     <command>localedef</command> program. E.g., the first
@@ -345,7 +332,9 @@ unset ZONEINFO</userinput></screen>
     <para>Then create the <filename>/etc/localtime</filename> file by
     running:</para>
 
-<screen><userinput>cp -v /usr/share/zoneinfo/<replaceable>&lt;xxx&gt;</replaceable> /etc/localtime</userinput></screen>
+<screen revision="sysv"><userinput>cp -v /usr/share/zoneinfo/<replaceable>&lt;xxx&gt;</replaceable> /etc/localtime</userinput></screen>
+
+<screen revision="systemd"><userinput>ln -sfv /usr/share/zoneinfo/<replaceable>&lt;xxx&gt;</replaceable> /etc/localtime</userinput></screen>
 
     <para>Replace <replaceable>&lt;xxx&gt;</replaceable> with the name of the
     time zone selected (e.g., Canada/Eastern).</para>
@@ -408,7 +397,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
 
       <seglistitem>
         <seg>catchsegv, gencat, getconf, getent, iconv, iconvconfig, ldconfig,
-        ldd, lddlibc4, locale, localedef, makedb, mtrace, nscd, pcprofiledump,
+        ldd, lddlibc4, locale, localedef, makedb, mtrace, nscd, 
         pldd, rpcgen, sln, sotruss, sprof, tzselect, xtrace,
         zdump, and zic</seg>
         <seg>ld-&glibc-version;.so, libBrokenLocale.{a,so}, libSegFault.so, libanl.{a,so},
@@ -416,7 +405,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         libcrypt.{a,so}, libdl.{a,so}, libg.a, libieee.a, libm.{a,so},
         libmcheck.a, libmemusage.so, libnsl.{a,so}, libnss_compat.so,
         libnss_dns.so, libnss_files.so, libnss_hesiod.so, libnss_nis.so,
-        libnss_nisplus.so, libpcprofile.so, libpthread.{a,so},
+        libnss_nisplus.so, libpthread.{a,so},
         libpthread_nonshared.a, libresolv.{a,so}, librpcsvc.a, librt.{a,so},
         libthread_db.so, and libutil.{a,so}</seg>
         <seg>/usr/include/arpa, /usr/include/bits, /usr/include/gnu,
@@ -582,16 +571,6 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="pcprofiledump">
-        <term><command>pcprofiledump</command></term>
-        <listitem>
-          <para>Dumps information generated by PC profiling</para>
-          <indexterm zone="ch-system-glibc pcprofiledump">
-            <primary sortas="b-pcprofiledump">pcprofiledump</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
       <varlistentry id="pldd">
         <term><command>pldd</command></term>
         <listitem>
@@ -601,18 +580,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
           </indexterm>
         </listitem>
       </varlistentry>
-<!--
-      <varlistentry id="pt_chown">
-        <term><command>pt_chown</command></term>
-        <listitem>
-          <para>A helper program for <command>grantpt</command> to set the owner,
-          group and access permissions of a slave pseudo terminal</para>
-          <indexterm zone="ch-system-glibc pt_chown">
-            <primary sortas="b-pt_chown">pt_chown</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
--->
+
       <varlistentry id="rpcgen">
         <term><command>rpcgen</command></term>
         <listitem>
@@ -853,17 +821,6 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
           protocols, etc.</para>
           <indexterm zone="ch-system-glibc libnss">
             <primary sortas="c-libnss">libnss</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="libpcprofile">
-        <term><filename class="libraryfile">libpcprofile</filename></term>
-        <listitem>
-          <para>Contains profiling functions used to track the amount of CPU
-          time spent in specific source code lines</para>
-          <indexterm zone="ch-system-glibc libpcprofile">
-            <primary sortas="c-libpcprofile">libpcprofile</primary>
           </indexterm>
         </listitem>
       </varlistentry>

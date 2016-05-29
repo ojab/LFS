@@ -43,7 +43,23 @@
 
     <para>Prepare Texinfo for compilation:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+<screen><userinput remap="configure">./configure --prefix=/usr --disable-static</userinput></screen>
+
+    <variablelist>
+      <title>The meaning of the configure options:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-static</parameter></term>
+        <listitem>
+          <para>In this case, the top-level configure script will complain that
+          this is an unrecognized option, but the configure script for
+          XSParagraph recognizes it and uses it to disable installing a static
+          <filename class="libraryfile">XSParagraph.a</filename> to <filename
+          class="directory">/usr/lib/texinfo</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
 
     <para>Compile the package:</para>
 
@@ -98,12 +114,14 @@ popd</userinput></screen>
 
     <segmentedlist>
       <segtitle>Installed programs</segtitle>
-      <segtitle>Installed directory</segtitle>
+      <segtitle>Installed library</segtitle>
+      <segtitle>Installed directories</segtitle>
 
       <seglistitem>
         <seg>info, install-info, makeinfo (link to texi2any),
         pdftexi2dvi, pod2texi, texi2any, texi2dvi, texi2pdf, and texindex</seg>
-        <seg>/usr/share/texinfo</seg>
+        <seg>XSParagraph.so</seg>
+        <seg>/usr/share/texinfo and /usr/lib/texinfo</seg>
       </seglistitem>
     </segmentedlist>
 
