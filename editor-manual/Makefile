@@ -2,7 +2,7 @@ BASEDIR=~/lfs-editors-guide
 CHUNK_QUIET=1
 PDF_OUTPUT=LFS-EDITORS-GUIDE.pdf
 NOCHUNKS_OUTPUT=LFS-EDITORS-GUIDE.html
-XSLROOTDIR=/usr/share/xml/docbook/xsl-stylesheets-current
+XSLROOTDIR=/usr/share/xml/docbook/stylesheet/docbook-xsl
 
 lfs:
 	xsltproc --xinclude --nonet -stringparam chunk.quietly $(CHUNK_QUIET) \
