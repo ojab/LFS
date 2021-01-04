@@ -31,7 +31,7 @@ first a summary, then a detailed log.</para>
    <listitem><para>January 4, 2021 [pierre]</para>
      <itemizedlist>
        <listitem>
-         <para>Makefile: adapt to the new LFS book stylecheets.</para>
+         <para>Makefile: adapt to the new LFS book stylesheets.</para>
        </listitem>
      </itemizedlist>
    </listitem>
