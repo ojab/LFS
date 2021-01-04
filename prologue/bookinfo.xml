@@ -5,27 +5,36 @@
 ]>
 
 <bookinfo>
-<title>Linux From Scratch Editor's Manual</title>
-<subtitle>Version &version;</subtitle>
+  <title>Linux From Scratch Editor's Manual</title>
+  <subtitle>Version &version;</subtitle>
 
-<authorgroup>
+  <authorgroup>
 
-<author><firstname>Gerard</firstname><surname>Beekmans</surname></author>
+    <author>
+      <firstname>Initial Version: Gerard</firstname>
+      <surname>Beekmans</surname>
+    </author>
+    <author>
+      <firstname>Git Version: Pierre</firstname>
+      <surname>Labastie</surname>
+    </author>
 
-</authorgroup>
+  </authorgroup>
 
 
-<copyright id="copyright">
+  <copyright id="copyright">
 
-	<year>2004</year>
+	<year>2004-&year;</year>
 	<holder>Gerard Beekmans</holder>
 
-</copyright>
+  </copyright>
 
-<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="legalnotice.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="legalnotice.xml"/>
 
-<abstract>
-<para>This manual teaches you how to properly edit the LFS-Book.</para>
-</abstract>
+  <abstract>
+    <para>
+      This manual teaches you how to properly edit the LFS-Book.
+    </para>
+  </abstract>
 
 </bookinfo>

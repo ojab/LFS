@@ -5,20 +5,24 @@
 ]>
 
 <preface id="preface" xreflabel="Welcome to the LFS Editor's Manual">
-<?dbhtml filename="preface.html"?>
-<title>Welcome to the LFS Editor's Manual</title>
-<?dbhtml dir="preface"?>
+  <?dbhtml filename="preface.html"?>
+  <title>Welcome to the LFS Editor's Manual</title>
+  <?dbhtml dir="preface"?>
 
-<para>This manual will teach you all that you need to know in order to
-properly edit the LFS-Book. It will cover some basic issues like accessing
-Subversion over SSH and the Subversion commands you will use. It will also discuss
-the proper sequence of doing things like upgrading a package and how to work with
-the bug tracking database.</para>
+  <para>
+    This manual will teach you all that you need to know in order to
+    properly edit the LFS-Book. It will cover some basic issues like accessing
+    Git over SSH and the Git commands you will use. It will also discuss the
+    proper sequence of doing things like upgrading a package and how to work
+    with the bug tracking database.
+  </para>
 
-<literallayout>
+  <literallayout>
 -- 
 Gerard Beekmans
 gerard@linuxfromscratch.org
-</literallayout>
+Pierre Labastie
+pierre@linuxfromscratch.org
+  </literallayout>
 
 </preface>
