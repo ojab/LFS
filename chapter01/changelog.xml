@@ -28,6 +28,13 @@ first a summary, then a detailed log.</para>
 
  <listitem><para>Changelog Entries:</para>
   <itemizedlist>
+   <listitem><para>January 4, 2021 [pierre]</para>
+     <itemizedlist>
+       <listitem>
+         <para>Makefile: adapt to the new LFS book stylecheets.</para>
+       </listitem>
+     </itemizedlist>
+   </listitem>
    <listitem><para>May 16, 2006 [ken]</para>
      <itemizedlist>
        <listitem><para>stylesheets: Updated to 1.69.1.</para></listitem>
