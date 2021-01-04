@@ -9,15 +9,15 @@
 <?dbhtml filename="introduction.html"?>
 
 <para>LFS development takes place using three main systems. Firstly,
-the mailing lists <email>lfs-book@linuxfromscratch.org</email>,
-<email>lfs-dev@linuxfromscratch.org</email> and (to a lesser extent) 
-<email>lfs-support@linuxfromscratch.org</email>. Secondly the Trac bug tracking
-system, and thirdly the Subversion server where the book itself is
+the mailing lists <email>lfs-book@gimli.linuxfromscratch.org</email>,
+<email>lfs-dev@gimli.linuxfromscratch.org</email> and (to a lesser extent) 
+<email>lfs-support@gimli.linuxfromscratch.org</email>. Secondly the Trac bug
+tracking system, and thirdly the Git server where the book itself is
 stored. All of these services are provided by the server
 <userinput>linuxfromscratch.org</userinput> also known as
-<userinput>belgarath.linuxfromscratch.org</userinput> or more usually,
-<userinput>belgarath</userinput>. This single server provides mailing
-lists, web hosting, Subversion hosting, Trac and
+<userinput>gimli.linuxfromscratch.org</userinput> or more usually,
+<userinput>gimli</userinput>. This single server provides mailing
+lists, web hosting, Git hosting, Trac and
 basically everything we use to work on the LFS project.</para>
 
 <para>The LFS book is written using Docbook-XML and is split into a number of
@@ -33,11 +33,11 @@ add, remove and edit tickets, you need to add an account and make sure you
 are logged in whenever you wish to perform such an action.  You can
 query and read the trac database without logging in or creating a user.
 Note that all ticket messages are copied to the
-<email>lfs-book@linuxfromscratch.org</email> mailing list and that all editors
-should be subscribed to this and the <email>lfs-dev@linuxfromscratch.org</email>
-list at a minimum.</para>
+<email>lfs-book@gimli.linuxfromscratch.org</email> mailing list and that all
+editors should be subscribed to this and the
+<email>lfs-dev@gimli.linuxfromscratch.org</email> list at a minimum.</para>
 
-<para>Finally, there is the Subversion server which will be discussed in the
+<para>Finally, there is the Git server which will be discussed in the
 following chapters.</para>
 
 </sect1>
