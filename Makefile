@@ -11,12 +11,12 @@ lfs:
 	if [ ! -e $(BASEDIR)/stylesheets ]; then \
 	  mkdir -p $(BASEDIR)/stylesheets; \
 	fi;
-	cp stylesheets/*.css $(BASEDIR)/stylesheets
+	cp ../BOOK/stylesheets/lfs-xsl/*.css $(BASEDIR)/stylesheets
 
 	if [ ! -e $(BASEDIR)/images ]; then \
 	  mkdir -p $(BASEDIR)/images; \
 	fi;
-	cp $(XSLROOTDIR)/images/*.png \
+	cp ../BOOK/images/*.png \
 	  $(BASEDIR)/images
 	cd $(BASEDIR)/; sed -i -e "s@../stylesheets@stylesheets@g" \
 	  *.html
