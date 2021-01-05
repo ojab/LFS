@@ -4,59 +4,77 @@
   %general-entities;
 ]>
 
-<sect1 id="ch02-svnssh">
-<title>Subversion SSH Access (for editors)</title>
-<?dbhtml filename="svnssh.html"?>
+<sect1 id="ch02-gitssh">
+<title>Git SSH Access (for editors)</title>
+<?dbhtml filename="gitssh.html"?>
 
 <para>For editors, access is slightly more complicated. You first of all need
 to generate an ssh key-pair. You then need to upload your public key into your
 <filename>~/.ssh</filename> directory on belgarath. To generate the keys run:
 </para>
 
-<para><screen><userinput>ssh-keygen -t dsa</userinput></screen></para>
+<para><screen><userinput>ssh-keygen</userinput></screen></para>
 
 <para>When prompted as to where to save them, it's probably best to leave
-them in .ssh (as <filename>id_dsa</filename> and
-<filename>id_dsa.pub</filename>) unless you already have ssh keys there.
+them in .ssh (as <filename>id_rsa</filename> and
+<filename>id_rsa.pub</filename>) unless you already have ssh keys there.
 When prompted for a passphrase just press enter (unless you want to have
-to give the phrase <emphasis>every</emphasis> time you perform a subversion
-operation.  But, since the same passphrase will be used when you log in to
-<emphasis>belgarath</emphasis> over ssh, it may be advisable to have some
+to give the phrase <emphasis>every</emphasis> time you synchronize to the
+server.  But, since the same passphrase will be used when you log in to
+<emphasis>gimli</emphasis> over ssh, it may be advisable to have some
 security in place.   Having generated your keys, upload
-<filename>~/.ssh/id_dsa.pub</filename> to belgarath and move it to
+<filename>~/.ssh/id_rsa.pub</filename> to gimli and move it to
 <filename>~/.ssh/authorized_keys2</filename> <emphasis>on
-belgarath</emphasis>.  (Your local copy of <filename>id_dsa</filename>
-and <filename>id_dsa.pub</filename> should remain untouched by
-this.) Make sure that the ~/.ssh directory on belgarath is mode 700:</para>
+gimli</emphasis>.  (Your local copy of <filename>id_rsa</filename>
+and <filename>id_rsa.pub</filename> should remain untouched by
+this.) Make sure that the ~/.ssh directory on gimli is mode 700:</para>
 
 <screen><userinput>chmod -R 700 ~/.ssh</userinput></screen>
 
 <para>Once you have this setup, try to checkout the latest LFS book revision by
 running:</para>
 
-<screen><userinput>svn checkout svn+ssh://svn.linuxfromscratch.org/LFS/trunk/BOOK lfs-trunk
-</userinput></screen>
+<screen><userinput>git clone git@gimli.linuxfromscratch.org/LFS lfs-trunk</userinput></screen>
 
-<para>If this works, you'll checkout a copy of the current book to
-<filename class="directory">lfs-trunk</filename> and you will have your own
-local working copy.  You will also have write access so from now on be extra
+<para>If this works, you'll download a copy of the current repository to
+<filename class="directory">lfs-trunk/.git</filename> and you will check out 
+the master branch. You will also have write access so from now on be extra
 careful, but note that <emphasis>no</emphasis> changes will be made until you
-issue a <userinput>svn commit</userinput> command.</para>
+issue a <userinput>git push</userinput> command.</para>
 
-<para>The above is fine for working in trunk, and you can checkout an individual
-branch in a similar manner.  But, merging changes between branches is much
-easier if you check out the whole tree by running:</para>
+<para>The above is fine for getting the master branch, but you may
+want to work on a public branch. To set up a local branch that tracks
+the public branch just issue:</para>
 
-<screen><userinput>svn checkout svn+ssh://svn.linuxfromscratch.org/LFS LFS
-</userinput></screen>
+<screen><userinput>git checkout --track origin/<replaceable>&lt;branchname&gt;</replaceable></userinput></screen>
 
-<para>The drawback to checking out the whole tree is that you will currently
-get about 102M of data instead of 5M.</para>
+<note>
+<title>Note to Subversion Users</title>
+<para>Contrary to Subversion, where you need to check out a new working
+copy of the remote branch, with Git almost nothing is downloaded.
+The local directory now reflects the new branch, but the old branch directory
+does not exist anymore.</para>
+</note>
+
+<para>
+If you need to work on the master branch, just commit your changes (if any)
+to the new branch (the commit is local), and switch back to the master
+copy with:
+</para>
+
+<screen><userinput>git checkout master</userinput></screen>
+
+<para>
+Since the new branch is already set up, if you want to work on the new branch,
+just do:
+</para>
+
+<screen><userinput>git checkout <replaceable>&lt;branchname&gt;</replaceable></userinput></screen>
 
 <para>As with anonymous access, you can update your local copy by simply
 <command>cd</command>'ing into the LFS directory and running:</para>
 
-<para><screen><userinput>svn update</userinput></screen></para>
+<para><screen><userinput>git pull</userinput></screen></para>
 
 
 </sect1>
