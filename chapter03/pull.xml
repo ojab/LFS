@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch03-update">
+  <title>git pull</title>
+  <?dbhtml filename="pull.html"?>
+
+  <para><userinput>git pull</userinput>.
+    This command synchronizes your local repository.
+    If you have made local changes, Git will try to
+    merge any changes on the server with the changes you have committed
+    <emphasis>on your machine</emphasis>. If the changes on the server overlap
+    with local uncommitted changes, the merge is cancelled, and the work tree
+    untouched.
+  </para>
+
+  <para>You should always do a manual <command>git <option>pull</option>
+    </command> before trying to push changes in order to ensure that there are
+    no conflicts with changes that have been made since you started your work.
+    Note that <command>git <option>push</option></command> will warn you if
+    there is a conflict, in case you forget to perform an <command>git
+    <option>pull</option></command>.
+  </para>
+</sect1>

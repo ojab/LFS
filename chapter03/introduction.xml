@@ -10,15 +10,28 @@
 
   <para>Let's get familiar with the basic set of commands which all editors will
     use on an almost daily basis. There are many more options available than the
-    ones listed here, so you will want to read the Subversion documentation
-    (<ulink url="http://svnbook.red-bean.com/"/>) at some point.
-    <command>svn <option>help</option></command> also provides a useful quick
-    reference for Subversion commands.
+    ones listed here, so you will want to read the Git documentation
+    (<ulink url="https://git-scm.com/book/en/v2">Pro Git</ulink>) at some
+    point.
+    <command>git <option>help</option></command> also provides a useful quick
+    reference for Git commands. Sometimes <command>git status</command> shows
+    a couple of commands that an user might want to run in the current
+    state of the repository.
   </para>
 
-  <para>Some Subversion commands have multiple forms, the canonical command and
-    one or more aliases.  We'll list the canonical form and an alias in the
-    descriptions.  <command>svn <option>help</option></command> provides a list
-    of all Subversion commands with all of their aliases.
-  </para>
+  <note>
+    <title>Note to Subversion Users</title>
+
+    <para>
+      In addition to the local repository, git maintains a staging area,
+      also known as the index. The command <command>git add</command>
+      populates that staging area, and <command>git commit</command> is
+      used transfer the content of the index to the repository. This
+      allows for a fine control of what is committed, but several
+      shortcuts can be taken. Note that <command>git add</command> may not
+      only be used to add files, but also to store modifications to the
+      existing files.
+    </para>
+  </note>
+
 </sect1>

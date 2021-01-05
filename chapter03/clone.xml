@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch03-clone">
+  <title>git clone</title>
+  <?dbhtml filename="clone.html"?>
+
+  <para><userinput>git clone</userinput>.
+    This command is used to copy a public repository to the local machine
+    and checkout the <emphasis>master</emphasis> branch. You should only
+    need to do this once. Various options allow to create a
+    <quote>shallow</quote> rpository, that do not contain the full history or
+    all the branches. See <command>git help clone</command>.
+  </para>
+
+  <bridgehead renderas="sect4">Examples</bridgehead>
+
+  <para>
+    To clone the LFS repository with only read access:
+  </para>
+
+<screen><userinput>git clone git://gimli.linuxfromscratch.org/LFS lfsbook</userinput></screen>
+
+  <para>
+    To clone with read/write access:
+  </para>
+
+<screen><userinput>git clone ssh://git@gimli.linuxfromscratch.org/LFS lfsbook</userinput></screen>
+
+</sect1>

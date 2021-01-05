@@ -4,19 +4,20 @@
   %general-entities;
 ]>
 
-<chapter id="chapter03" xreflabel="Basic Subversion Commands">
+<chapter id="chapter03" xreflabel="Basic Git Commands">
 <?dbhtml filename="chapter03.html"?>
-  <title>Basic Subversion Commands</title>
+  <title>Basic Git Commands</title>
 <?dbhtml dir="chapter03"?>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="introduction.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="checkout.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="clone.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="pull.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="add.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="delete.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="update.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="delmov.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="commit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="diff.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="checkout.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="merge.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="moving.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="rebase.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="diff.xml"/>
 
 </chapter>
