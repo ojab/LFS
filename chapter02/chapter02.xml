@@ -10,8 +10,8 @@
 <?dbhtml dir="chapter02"?>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="introduction.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="anonsvn.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="svnssh.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="anongit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="gitssh.xml"/>
 
 </chapter>
 

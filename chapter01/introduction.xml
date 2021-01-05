@@ -10,14 +10,14 @@
 
   <para>
     LFS development takes place using three main systems. Firstly,
-    the mailing lists <email>lfs-book@gimli.linuxfromscratch.org</email>,
-    <email>lfs-dev@gimli.linuxfromscratch.org</email> and (to a lesser extent) 
-    <email>lfs-support@gimli.linuxfromscratch.org</email>. Secondly the Trac
+    the mailing lists <email>lfs-book@lists.linuxfromscratch.org</email>,
+    <email>lfs-dev@lists.linuxfromscratch.org</email> and (to a lesser extent) 
+    <email>lfs-support@lists.linuxfromscratch.org</email>. Secondly the Trac
     bug tracking system, and thirdly the Git server where the book itself is
     stored. All of these services are provided by the server
     <userinput>linuxfromscratch.org</userinput> also known as
-    <userinput>gimli.linuxfromscratch.org</userinput> or more usually,
-    <userinput>gimli</userinput>. This single server provides mailing
+    <userinput>lists.linuxfromscratch.org</userinput> or more usually,
+    <userinput>lists</userinput>. This single server provides mailing
     lists, web hosting, Git hosting, Trac and
     basically everything we use to work on the LFS project.
   </para>
@@ -38,9 +38,9 @@
     you are logged in whenever you wish to perform such an action.  You can
     query and read the trac database without logging in or creating a user.
     Note that all ticket messages are copied to the
-    <email>lfs-book@gimli.linuxfromscratch.org</email> mailing list and that
+    <email>lfs-book@lists.linuxfromscratch.org</email> mailing list and that
     all editors should be subscribed to this and the
-    <email>lfs-dev@gimli.linuxfromscratch.org</email> list at a minimum.
+    <email>lfs-dev@lists.linuxfromscratch.org</email> list at a minimum.
   </para>
 
   <para>

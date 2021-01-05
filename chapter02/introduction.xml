@@ -8,16 +8,37 @@
 <title>Introduction</title>
 <?dbhtml filename="introduction.html"?>
 
-<para>The belgarath Subversion server provides services for all of the *LFS
-projects (and some others). The tree which we are interested in for
-LFS editing is (unsurprisingly) the LFS tree.  A complete list of the
+<para>The gimli Git server provides repositories for all of the *LFS
+projects (and some others). The repository which we are interested in for
+LFS editing is (unsurprisingly) the LFS repository. A complete list of the
 modules which are available can be found using the Trac source browser
 interface at
 <ulink url="http://wiki.linuxfromscratch.org/lfs/browser"/>.</para> 
 
-<para>There are two types of Subversion access provided to the LFS tree.
+<para>There are two types of Git access provided to the LFS tree.
 Firstly, there is anonymous read-only access which anyone can use.
 Secondly, there is read-write access granted to active editors who have
-accounts on belgarath.</para>
+accounts on gimli.</para>
 
+<note>
+  <title>Note to Subversion Users</title>
+  <para>
+    Subversion is a centralized version control system, which means there
+    is a unique repository on the server, and that users can 
+    <emphasis>check out</emphasis> that repository to a working directory
+    on their local machine. Users with write access can then
+    <emphasis>commit</emphasis> their modifications to the repository
+    on the server.
+  </para>
+  <para>
+    Git is a distributed version control system, which means that all users
+    have their own repository. The repository on the server is nothing more
+    than the others, except that a public access is granted to it. The action
+    of copying the repository from the server to the local machine is named
+    <emphasis>cloning</emphasis>. Checking out and committing thus only occur
+    locally. The action of synchronizing the public repository with the
+    local one is named <emphasis>pull</emphasis> (public to local) or
+    <emphasis>push</emphasis> (local to public for users with write access).
+  </para>
+</note>
 </sect1>

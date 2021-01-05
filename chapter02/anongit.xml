@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch02-anongit">
+<title>Anonymous Access</title>
+<?dbhtml filename="anongit.html"?>
+
+<para>To get anonymous access, simply use the following commands (note
+that these assume you are using bash or a similar shell:</para>
+
+<screen><userinput>git clone git://gimli.linuxfromscratch.org/LFS/ lfs-git</userinput></screen>
+
+<para>This will copy the public repository to a subdirectory of the <filename
+class="directory">lfs-git</filename> directory, then checkout the master
+branch to that directory. It will also set the local repository to track
+the master branch of the public repository, so that you can
+update your local repository by simply running (after changing directory to
+<filename class="directory">lfs-git</filename>):</para>
+
+<screen><userinput>git pull</userinput></screen>
+
+</sect1>
