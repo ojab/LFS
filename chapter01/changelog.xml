@@ -24,10 +24,28 @@ first a summary, then a detailed log.</para>
  </listitem>
  
  <listitem><para>Removed:</para>
+  <itemizedlist>
+   <listitem><para>Removed Stylesheets.</para></listitem>
+  </itemizedlist>
  </listitem>
 
  <listitem><para>Changelog Entries:</para>
   <itemizedlist>
+   <listitem><para>January 5, 2021 [pierre]</para>
+     <itemizedlist>
+       <listitem>
+         <para>Stylesheets: Remove and use those of the lfs book.</para>
+       </listitem>
+       <listitem>
+         <para>Makefile: Create variables so that using a local layout is
+         easier. Also fix some obsolete commands.</para>
+       </listitem>
+       <listitem>
+         <para>Chapter 2: Change filenames, rewrite things so that the
+         commands refer to git instead of svn. Also fix hostnames.</para>
+       </listitem>
+     </itemizedlist>
+   </listitem>
    <listitem><para>January 4, 2021 [pierre]</para>
      <itemizedlist>
        <listitem>
